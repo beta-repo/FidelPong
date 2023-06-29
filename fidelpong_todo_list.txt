@@ -1,0 +1,10 @@
+﻿-- * scores for winning 
+-- * win/lose splashcreens
+-- * start splashscreen
+-- * change keys to arrows
+* spinning pedal
+-- * background image
+-- * background music
+* human-head ball
+* 3 pedals
+* 4 pedals
