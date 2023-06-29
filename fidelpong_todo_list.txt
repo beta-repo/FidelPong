@@ -1,4 +1,5 @@
-﻿-- * scores for winning 
+* convert to python3
+-- * scores for winning 
 -- * win/lose splashcreens
 -- * start splashscreen
 -- * change keys to arrows
