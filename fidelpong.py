@@ -32,7 +32,7 @@
 #					-
 
 #======================
-_debug_mode = 1
+_debug_mode = 0
 _debug_server = 'localhost'
 #_debug_server = '192.168.0.42' #for playing with Sahsha
 #_debug_server = '192.168.0.78' #for playing on Anton's server
