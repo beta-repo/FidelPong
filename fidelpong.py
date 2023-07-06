@@ -177,15 +177,15 @@ class Listener(ConnectionListener):
 					if event.type == pygame.KEYDOWN:
 					
 						# if up key is pressed move the bar up
-						if event.key == 273:
+						if event.key == pygame.K_UP:
 							self.movement[self.num] = -10
 						
 						# if down key is pressed move the bar down
-						elif event.key == 274:
+						elif event.key == pygame.K_DOWN:
 							self.movement[self.num] = 10
 							
 						# if 'j' is pressed move the bar does the spin-jump trick
-						elif event.unicode == 'j':
+						elif event.key == pygame.K_j:
 							self.bar_spin_jump()
 						
 					elif event.type == pygame.KEYUP:
@@ -281,7 +281,7 @@ class Listener(ConnectionListener):
 						#todo: compute the bar image movement down and up when spinning, for spinning around center
 						#bar_left = cos(angle)
 						
-						print "angle:"+ str(angle)
+						print("angle:"+ str(angle))
 						if angle > 360:
 							angle = angle-360
 							
@@ -291,8 +291,8 @@ class Listener(ConnectionListener):
 							rect.left = self.rect_left_position_for_spin - self.Rotation_v(angle, self.pedal_width, self.pedal_height)
 							
 							#rect.top -= self.Rotation_u(angle, self.pedal_width, self.pedal_height)
-							print "coord: "+ str(rect.left) +","+ str(rect.top)
-							print "middle: "+ str(self.pedal_middle_x) +","+ str(self.pedal_middle_y)
+							print("coord: "+ str(rect.left) +","+ str(rect.top))
+							print("middle: "+ str(self.pedal_middle_x) +","+ str(self.pedal_middle_y))
 							
 						if 1:
 							a=1
@@ -330,7 +330,7 @@ class Listener(ConnectionListener):
 						self.rect_left_position_for_spin = rect.left
 						self.rect_top_position_for_spin = rect.top
 					
-					print("rect_left_position_for_spin: "+ str(self.rect_left_position_for_spin))
+					#print(("rect_left_position_for_spin: "+ str(self.rect_left_position_for_spin)))
 					self.screen.blit(bar_image, rect)
 					
 					if n == self.num:
@@ -404,8 +404,8 @@ class Listener(ConnectionListener):
 	def play_background_music(self):
 		try:
 			pygame.mixer.init(FREQ, BITSIZE, CHANNELS, BUFFER)
-		except pygame.error, exc:
-			print >>sys.stderr, "Could not initialize sound system: %s" % exc
+		except pygame.error as exc:
+			print("Could not initialize sound system: %s" % exc, file=sys.stderr)
 			sys.Exit(1)
 
 		music_file = "audio/Big_Gigantic_Fire_It_Up.ogg"
@@ -415,10 +415,10 @@ class Listener(ConnectionListener):
 if _debug_mode:
 	server = _debug_server
 else :
-	print 'Enter the server ip adresse (previously enter on the server script).'
-	print 'Empty for localhost'
+	print('Enter the server ip adresse (previously enter on the server script).')
+	print('Empty for localhost')
 	# ask the server ip adresse
-	server = raw_input('server ip: ')
+	server = input('server ip: ')
 
 # control if server is empty
 if server == '':
@@ -428,5 +428,6 @@ if server == '':
 listener = Listener(server, 31500)
 # start the mainloop
 listener.Loop()
+
 
 

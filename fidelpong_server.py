@@ -20,7 +20,7 @@
 #					-Created debug mode
 
 #======================
-_debug_mode = 1
+_debug_mode = 0
 _debug_server = 'localhost'
 #_debug_server = '192.168.0.42' #for playing with Anton
 #======================
@@ -94,19 +94,19 @@ class MyServer(Server):
 		self.players = []
 		
 		#points for winning
-		#self.points_to_win = 100;
+		self.points_to_win = 100;
 		#for debug:
-		self.points_to_win = 10000;
+		#self.points_to_win = 10000;
 		
 		# adresse and port at which server is started
 		adresse, port = kwargs['localaddr']
 		
-		print 'Server started at', adresse, 'at port', str(port)
-		print 'Now you can start the clients'
+		print('Server started at', adresse, 'at port', str(port))
+		print('Now you can start the clients')
 	
 	# function called on every connection
 	def Connected(self, player, addr):
-		print 'Player connected at', addr[0], 'at port', addr[1]
+		print('Player connected at', addr[0], 'at port', addr[1])
 		
 		# add player to the list
 		self.players.append(player)
@@ -218,11 +218,11 @@ class MyServer(Server):
 if _debug_mode:
 	adresse = _debug_server
 else :
-	print 'Enter the ip adresse of the server. Normally the ip adresse of the computer.'
-	print 'example: localhost or 192.168.0.2'
-	print 'Empty for localhost'
+	print('Enter the ip adresse of the server. Normally the ip adresse of the computer.')
+	print('example: localhost or 192.168.0.2')
+	print('Empty for localhost')
 	# ip adresse of the server (normally the ip adresse of the computer)
-	adresse = raw_input('Server ip: ')
+	adresse = input('Server ip: ')
 
 # control if adresse is empty
 if adresse == '':
@@ -232,3 +232,4 @@ if adresse == '':
 myserver = MyServer(localaddr=(adresse, 31500))
 # start mainloop
 myserver.Loop()
+
